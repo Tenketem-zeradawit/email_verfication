@@ -30,6 +30,8 @@ router.post("/signup", async (request, response) => {
         { expiresIn: "1h" }
       );
 
+      await newUser.save();
+
       await sendVerificationEmail(newUser.email, verificationToken);
 
       response.status(201).json({
