@@ -10,7 +10,7 @@ const router = express.Router();
 router.post("/signup", async (request, response) => {
   try {
     const { username, password, email } = request.body;
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
       return response
         .status(400)
